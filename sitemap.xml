@@ -31,6 +31,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://127.0.0.1/Template/Default/__builtin/</loc>
+         <lastmod>2024-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://127.0.0.1/Template/Math/NumberTheory/PrimeFactorization/</loc>
          <lastmod>2024-03-07</lastmod>
          <changefreq>daily</changefreq>
