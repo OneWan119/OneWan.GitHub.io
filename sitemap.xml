@@ -121,37 +121,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://127.0.0.1/Template/String/AC%E8%87%AA%E5%8A%A8%E6%9C%BA%28AC_Automaton%29/</loc>
-         <lastmod>2024-03-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>http://127.0.0.1/Template/String/StringHash/</loc>
          <lastmod>2024-03-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://127.0.0.1/Template/String/Trie/</loc>
-         <lastmod>2024-03-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://127.0.0.1/Template/String/%E5%89%8D%E7%BC%80%E5%87%BD%E6%95%B0%E4%B8%8EKMP/</loc>
-         <lastmod>2024-03-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://127.0.0.1/Template/String/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/</loc>
-         <lastmod>2024-03-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://127.0.0.1/Template/String/%E6%9D%82%E9%A2%98%281%29/</loc>
-         <lastmod>2024-03-08</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://127.0.0.1/Template/String/%E9%A9%AC%E6%8B%89%E8%BD%A6%28Manacher%29/</loc>
          <lastmod>2024-03-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
