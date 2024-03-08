@@ -10,8 +10,8 @@ https://github.com/squidfunk/mkdocs-material */
 
 /* Box shadows don't do well in PDFs */
 #print-site-page table {
-    border: 1px solid hsla(200, 18%, 26%, 1); /* #EFEFEF */
-    box-shadow: none !important;
+    /*border: 1px solid hsla(200, 18%, 26%, 1); /* #EFEFEF */
+    /* box-shadow: none !important; */
 }
 
 @media print {
