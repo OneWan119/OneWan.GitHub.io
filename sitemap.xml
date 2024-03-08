@@ -6,12 +6,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://127.0.0.1/Template/DataStructure/FenwickTree/</loc>
+         <lastmod>2024-03-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://127.0.0.1/Template/DataStructure/MonotonicQueue/</loc>
          <lastmod>2024-03-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://127.0.0.1/Template/DataStructure/MonotonicStack/</loc>
+         <lastmod>2024-03-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://127.0.0.1/Template/DataStructure/SparseTable/</loc>
          <lastmod>2024-03-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
