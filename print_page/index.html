@@ -804,6 +804,8 @@
       
         
       
+        
+      
     
     
       
@@ -877,6 +879,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/Math/NumberTheory/EulerTotientFunction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    欧拉函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -901,6 +924,8 @@
   
     
     
+      
+        
       
         
       
@@ -970,6 +995,27 @@
   
   <span class="md-ellipsis">
     最小生成树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Template/Graph/EulerGraph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    欧拉图
   </span>
   
 
@@ -4022,6 +4068,116 @@
 </span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="p">}</span><span class="w"> </span><span class="c1">// EulerSieve</span>
 </span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">EulerSieve</span><span class="p">;</span>
 </span></code></pre></div></td></tr></table></div>
+</details></section><section class="print-page" id="template-math-numbertheory-eulertotientfunction"><h1 id="template-math-numbertheory-eulertotientfunction-_1">欧拉函数</h1>
+<h2 id="template-math-numbertheory-eulertotientfunction-_2">定义</h2>
+<p><span class="arithmatex">\(\phi(n)=\sum^n_{i=1}[\gcd(i,n)==1]\)</span></p>
+<h2 id="template-math-numbertheory-eulertotientfunction-_3">定理</h2>
+<p>① 若 <span class="arithmatex">\(\gcd(p,q)=1\)</span> 则 <span class="arithmatex">\(\phi(p\cdot{q})=\phi(p)\cdot\phi(q)\)</span></p>
+<p>② <span class="arithmatex">\(n\)</span> 为正整数 有 <span class="arithmatex">\(n=\sum_{d|n}\phi(d)\)</span></p>
+<p>③ <span class="arithmatex">\(n=p_1^{a_1}\cdot p_2^{a_2}\cdot…\cdot p_s^{a_s}\)</span> 是正整数 <span class="arithmatex">\(n\)</span> 的质幂因子分解 则</p>
+<div class="arithmatex">\[
+\begin{align}
+\phi(n)&amp;=n\cdot(1-\frac{1}{p_1})\cdot(1-\frac{1}{p_2})\cdot…\cdot(1-\frac{1}{p_s})\\
+&amp;=n\cdot\prod_{i=1}^s(1-\frac{1}{p_i})
+\end{align}
+\]</div>
+<h2 id="template-math-numbertheory-eulertotientfunction-_4">求欧拉函数</h2>
+<details class="note">
+<summary>模版</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="template-math-numbertheory-eulertotientfunction-__tabbed_1_1" name="template-math-numbertheory-eulertotientfunction-__tabbed_1" type="radio" /><input id="template-math-numbertheory-eulertotientfunction-__tabbed_1_2" name="template-math-numbertheory-eulertotientfunction-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="template-math-numbertheory-eulertotientfunction-__tabbed_1_1">暴力<span class="arithmatex">\(O(\sqrt n)\)</span></label><label for="template-math-numbertheory-eulertotientfunction-__tabbed_1_2">欧拉筛 <span class="arithmatex">\(O(n)\)</span></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-c++ highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">euler_phi</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">            </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">                </span><span class="n">n</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-c++ highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#template-math-numbertheory-eulertotientfunction-__codelineno-1-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">namespace</span><span class="w"> </span><span class="nn">EulerSieve</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prime</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vis</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">_EulerSieveInit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="n">n</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="n">vis</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="n">vis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="n">phi</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">        </span><span class="n">phi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">                </span><span class="n">prime</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">                </span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">prime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mf">1L</span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">                </span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">                    </span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">                </span><span class="p">}</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">                </span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">primeInit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">        </span><span class="n">_EulerSieveInit</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="p">}</span><span class="w"> </span><span class="c1">// EulerSieve</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">EulerSieve</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 </details></section><h1 class='nav-section-title-end'>Ended: 数论</h1><h1 class='nav-section-title-end'>Ended: 数学</h1>
                         <h2 class='nav-section-title' id='section-图论'>
                             图论 <a class='headerlink' href='#section-图论' title='Permanent link'>↵</a>
@@ -5137,6 +5293,300 @@
 </span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 </span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+</div>
+</details></section><section class="print-page" id="template-graph-eulergraph"><h1 id="template-graph-eulergraph-_1">欧拉图</h1>
+<h2 id="template-graph-eulergraph-_2">欧拉图判别法</h2>
+<ul>
+<li><strong>欧拉回路</strong>：通过图中每条边恰好一次的回路</li>
+<li><strong>欧拉通路</strong>：通过图中每条边恰好一次的通路</li>
+<li><strong>欧拉图</strong>：具有欧拉回路的图</li>
+<li><strong>半欧拉图</strong>：具有欧拉通路但不具有欧拉回路的图</li>
+</ul>
+<p>①无向图是欧拉图当且仅当</p>
+<ul>
+<li>非0度顶点是连通的</li>
+<li>顶点的度数都是偶数</li>
+</ul>
+<p>②无向图是半欧拉图当且仅当</p>
+<ul>
+<li>非0度顶点是连通的</li>
+<li>恰有2个奇度顶点</li>
+</ul>
+<p>③有向图是欧拉图当且仅当</p>
+<ul>
+<li>非0度顶点是强连通的</li>
+<li>每个顶点的入度等于出度</li>
+</ul>
+<p>④有向图是半欧拉图当且仅当</p>
+<ul>
+<li>非0度顶点是弱连通的</li>
+<li>1个顶点的出度与入度之差为1</li>
+<li>1个顶点的入度与出度之差为1</li>
+<li>其他顶点的入度和出度相等</li>
+</ul>
+<details class="note">
+<summary>例题</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="template-graph-eulergraph-__tabbed_1_1" name="template-graph-eulergraph-__tabbed_1" type="radio" /><input id="template-graph-eulergraph-__tabbed_1_2" name="template-graph-eulergraph-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="template-graph-eulergraph-__tabbed_1_1">洛谷P7771(有向图)</label><label for="template-graph-eulergraph-__tabbed_1_2">洛谷P2731(无向图)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="https://www.luogu.com.cn/problem/P7771">P7771 【模板】欧拉路径 - 洛谷</a></p>
+<details class="note">
+<summary>代码</summary>
+<div class="language-c++ highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-0-54">54</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// 2024 OneWan</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="p">[</span><span class="mi">100005</span><span class="p">],</span><span class="w"> </span><span class="n">indeg</span><span class="p">[</span><span class="mi">100005</span><span class="p">],</span><span class="w"> </span><span class="n">outdeg</span><span class="p">[</span><span class="mi">100005</span><span class="p">];</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Hierholzer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">        </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="n">Hierholzer</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="n">ans</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">        </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">        </span><span class="n">outdeg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">        </span><span class="n">indeg</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">scnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">ecnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indeg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">outdeg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">            </span><span class="n">ecnt</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">outdeg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">indeg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">            </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">            </span><span class="n">scnt</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">indeg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">outdeg</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;No</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ecnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">scnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="n">ecnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">scnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;NO</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="w">        </span><span class="n">sort</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="n">end</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="n">Hierholzer</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ans</span><span class="p">.</span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">        </span><span class="n">ans</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+</div>
+<div class="tabbed-block">
+<p><a href="https://www.luogu.com.cn/problem/P2731">P2731 [USACO3.3]骑马修栅栏 Riding the Fences - 洛谷</a></p>
+<details class="note">
+<summary>代码</summary>
+<div class="language-c++ highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-48">48</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-49">49</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-50">50</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-51">51</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-52">52</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-53">53</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-54">54</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-55">55</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-56">56</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-57">57</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-58">58</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-59">59</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-60">60</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-61">61</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-62">62</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-63">63</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-64">64</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-65">65</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-66">66</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-67">67</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-68">68</a></span>
+<span class="normal"><a href="#template-graph-eulergraph-__codelineno-1-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1">// 2024 OneWan</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">rev</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">exist</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="n">Node</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">to</span><span class="p">(</span><span class="n">to</span><span class="p">),</span><span class="w"> </span><span class="n">rev</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">exist</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">to</span><span class="p">;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="p">};</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="n">vector</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="mi">1025</span><span class="p">];</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="p">[</span><span class="mi">1025</span><span class="p">],</span><span class="w"> </span><span class="n">deg</span><span class="p">[</span><span class="mi">1025</span><span class="p">],</span><span class="w"> </span><span class="n">top</span><span class="p">[</span><span class="mi">1025</span><span class="p">];</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Hierholzer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">exist</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">            </span><span class="n">Node</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">            </span><span class="n">adj</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">exist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">            </span><span class="n">adj</span><span class="p">[</span><span class="n">temp</span><span class="p">.</span><span class="n">to</span><span class="p">][</span><span class="n">temp</span><span class="p">.</span><span class="n">rev</span><span class="p">].</span><span class="n">exist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">            </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">            </span><span class="n">Hierholzer</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">to</span><span class="p">);</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">            </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">    </span><span class="n">ans</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="p">}</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">    </span><span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">    </span><span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">    </span><span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">        </span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">        </span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">        </span><span class="n">deg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">        </span><span class="n">deg</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vcnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">deg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">            </span><span class="n">vcnt</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vcnt</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">vcnt</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="w">        </span><span class="n">sort</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="n">end</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">k</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w">            </span><span class="n">k</span><span class="p">.</span><span class="n">rev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">[</span><span class="n">k</span><span class="p">.</span><span class="n">to</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">    </span><span class="n">Hierholzer</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ans</span><span class="p">.</span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="w">        </span><span class="n">ans</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 </details>
 </div>
