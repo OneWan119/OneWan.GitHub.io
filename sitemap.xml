@@ -111,7 +111,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://127.0.0.1/template/default/__builtin/</loc>
+         <loc>http://127.0.0.1/template/default/builtin/</loc>
          <lastmod>2024-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
